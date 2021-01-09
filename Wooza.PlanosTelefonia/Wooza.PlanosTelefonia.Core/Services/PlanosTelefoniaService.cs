@@ -16,19 +16,39 @@ namespace Wooza.PlanosTelefonia.Core.Services
             this.planoTelefoniaRepositorio = planoTelefoniaRepositorio;
         }
 
-        public PlanoTelefonia Atualizar(PlanoTelefoniaCommand planoTelefonia)
+        public PlanoTelefonia Atualizar(PlanoTelefoniaCommand planoTelefoniaCommand)
         {
-            throw new NotImplementedException();
+            PlanoTelefonia planoTelefonia = planoTelefoniaRepositorio.GetById(planoTelefoniaCommand.Id);
+            var planoTelefoniaMapeado = Mapear(planoTelefoniaCommand, planoTelefonia);
+            return planoTelefoniaRepositorio.Update(planoTelefoniaMapeado);
         }
 
-        public PlanoTelefonia Criar(PlanoTelefoniaCommand planoTelefonia)
+        public PlanoTelefonia Criar(PlanoTelefoniaCommand planoTelefoniaCommand)
         {
-            throw new NotImplementedException();
+            PlanoTelefonia planoTelefonia = Mapear(planoTelefoniaCommand, new PlanoTelefonia());
+            return planoTelefoniaRepositorio.Create(planoTelefonia);
         }
+
+        private PlanoTelefonia Mapear(PlanoTelefoniaCommand planoTelefoniaCommand, PlanoTelefonia planoTelefonia)
+        {
+            planoTelefonia.Id = planoTelefoniaCommand.Id;
+            planoTelefonia.Codigo = planoTelefoniaCommand.Codigo;
+            planoTelefonia.Minutos = planoTelefoniaCommand.Minutos;
+            planoTelefonia.FranquiaInternet = planoTelefoniaCommand.FranquiaInternet;
+            planoTelefonia.Valor = planoTelefoniaCommand.Valor;
+            planoTelefonia.DDDId = planoTelefoniaCommand.DDDId;
+            planoTelefonia.OperadoraId = planoTelefoniaCommand.OperadoraId;
+            planoTelefonia.TipoPlano = planoTelefoniaCommand.TipoPlano;
+
+            return planoTelefonia;
+       }
 
         public void Deletar(int id)
         {
-            throw new NotImplementedException();
+            var planoTelefonia = planoTelefoniaRepositorio.GetById(id);
+            if (planoTelefonia == null)
+                throw new Exception($"Plano com id {id} não encontrado.");
+            planoTelefoniaRepositorio.Delete(id);
         }
 
         public List<PlanoTelefoniaView> GetAll()

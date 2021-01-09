@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using Wooza.PlanosTelefonia.Core.Commands;
 using Wooza.PlanosTelefonia.Core.Interfaces;
 
 namespace Wooza.PlanosTelefonia.API.Controllers
@@ -35,5 +36,46 @@ namespace Wooza.PlanosTelefonia.API.Controllers
             }
         }
 
+        [HttpPost, Route("")]
+        public IActionResult Criar(PlanoTelefoniaCommand plano)
+        {
+            try
+            {
+                var novoPlano = planoTelefoniaService.Criar(plano);
+                return Ok(novoPlano);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut, Route("{id}")]
+        public IActionResult Atualizar(PlanoTelefoniaCommand plano)
+        {
+            try
+            {
+                var planoAtualizado = planoTelefoniaService.Atualizar(plano);
+                return Ok(planoAtualizado);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete, Route("{id}")]
+        public IActionResult Deletar(int id)
+        {
+            try
+            {
+                planoTelefoniaService.Deletar(id);
+                return Ok();
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

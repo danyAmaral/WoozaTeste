@@ -9,12 +9,14 @@ namespace Wooza.PlanosTelefonia.Infraestrutura
         {
         }
 
-        public Contexto(DbContextOptions<Contexto> options) : base(options) { }
+        public Contexto(DbContextOptions<Contexto> options) : base(options) {
+
+        }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PlanosTelefonia;Integrated Security=true");
+            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=DBPlanosTelefonia;Integrated Security=true");
             base.OnConfiguring(optionsBuilder);
         }
         protected override void OnModelCreating(ModelBuilder builder)
@@ -56,6 +58,8 @@ namespace Wooza.PlanosTelefonia.Infraestrutura
                 entity.Property(e => e.FranquiaInternet).IsRequired();
                 entity.Property(e => e.Valor).HasColumnType("decimal(18, 2)");
 
+                entity.HasIndex(e => e.OperadoraId);
+                entity.HasIndex(e => e.DDDId);
 
                 entity.HasOne(d => d.DDD)
                    .WithMany(p => p.PlanosTelefonicos)

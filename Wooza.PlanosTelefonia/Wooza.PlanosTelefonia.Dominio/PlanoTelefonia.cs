@@ -12,7 +12,7 @@ namespace Wooza.PlanosTelefonia.Dominio
         public int DDDId { get; set; }
         public int OperadoraId { get; set; }
         public TipoPlano TipoPlano { get; set; }
-        public Operadora Operadora { get; set; }
-        public DDD DDD { get; set; }
+        public virtual Operadora Operadora { get; set; }
+        public virtual DDD DDD { get; set; }
     }
 }

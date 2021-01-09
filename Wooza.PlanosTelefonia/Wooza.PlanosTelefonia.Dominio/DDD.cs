@@ -9,6 +9,6 @@ namespace Wooza.PlanosTelefonia.Dominio
         public int Codigo { get; set; }
         public string Estado { get; set; }
         public string Cidade { get; set; }
-        public List<PlanoTelefonia> PlanosTelefonicos { get; set; }
+        public virtual ICollection<PlanoTelefonia> PlanosTelefonicos { get; set; }
     }
 }

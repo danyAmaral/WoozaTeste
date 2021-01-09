@@ -9,7 +9,7 @@ namespace Wooza.PlanosTelefonia.Infraestrutura
 {
     public abstract class Repositorio<T> : IRepositorio<T> where T : class, IEntity
     {
-        private Contexto ctx;
+        protected Contexto ctx;
         public Repositorio(Contexto ctx)
         {
             this.ctx = ctx;

@@ -9,7 +9,7 @@ using Wooza.PlanosTelefonia.Infraestrutura;
 namespace Wooza.PlanosTelefonia.Infraestrutura.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20210109131454_inicial")]
+    [Migration("20210109150351_inicial")]
     partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

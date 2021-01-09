@@ -4,3 +4,7 @@ Projeto criado usando:
   - Entity Framework com Sql Server
   - Clean Architecture
   - Migrations
+  
+Descrição:
+  - CRUD de Planos de Telefonia
+  - Filtros de Planos de Telefonia

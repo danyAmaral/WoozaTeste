@@ -63,6 +63,22 @@ namespace Wooza.PlanosTelefonia.Core.Services
             return planosTelefonicosView;
         }
 
+        public List<PlanoTelefoniaView> Filtrar(int ddd, int? operadora, TipoPlano? tipo, int? idPlano)
+        {
+            var planosTelefonicosView = new List<PlanoTelefoniaView>();
+            var planos = planoTelefoniaRepositorio
+                    .GetAll(x=> x.DDDId == ddd &&
+                             ((operadora.HasValue && x.OperadoraId == operadora) ||
+                              (tipo.HasValue && x.TipoPlano == tipo) ||
+                              (idPlano.HasValue && x.Id == idPlano))
+                            , x => x.Operadora, x => x.DDD);
+            foreach (var plano in planos)
+            {
+                planosTelefonicosView.Add(Mapear(plano));
+            }
+
+            return planosTelefonicosView;
+        }
         public PlanoTelefoniaView GetByID(int id)
         {
             var planoTelefonia = planoTelefoniaRepositorio.GetById(id, x=> x.Operadora, x=> x.DDD);

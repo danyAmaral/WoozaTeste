@@ -2,6 +2,7 @@
 using System;
 using Wooza.PlanosTelefonia.Core.Commands;
 using Wooza.PlanosTelefonia.Core.Interfaces;
+using Wooza.PlanosTelefonia.Dominio;
 
 namespace Wooza.PlanosTelefonia.API.Controllers
 {
@@ -19,8 +20,8 @@ namespace Wooza.PlanosTelefonia.API.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-           var itens = planoTelefoniaService.GetAll();
-            return base.Ok(itens);
+           var planos = planoTelefoniaService.GetAll();
+            return base.Ok(planos);
         }
 
         [HttpGet, Route("{id}")]
@@ -44,7 +45,7 @@ namespace Wooza.PlanosTelefonia.API.Controllers
                 var novoPlano = planoTelefoniaService.Criar(plano);
                 return Ok(novoPlano);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -58,7 +59,7 @@ namespace Wooza.PlanosTelefonia.API.Controllers
                 var planoAtualizado = planoTelefoniaService.Atualizar(plano);
                 return Ok(planoAtualizado);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -72,7 +73,7 @@ namespace Wooza.PlanosTelefonia.API.Controllers
                 planoTelefoniaService.Deletar(id);
                 return Ok();
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }

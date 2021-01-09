@@ -12,5 +12,6 @@ namespace Wooza.PlanosTelefonia.Core.Interfaces
         void Deletar(int id);
         List<PlanoTelefoniaView> GetAll();
         PlanoTelefoniaView GetByID(int id);
+        List<PlanoTelefoniaView> Filtrar(int ddd, int? operadora, TipoPlano? tipo, int? idPlano);
     }
 }

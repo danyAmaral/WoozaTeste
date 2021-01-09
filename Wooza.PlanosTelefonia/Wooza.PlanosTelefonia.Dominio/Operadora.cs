@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using Wooza.PlanosTelefonia.Dominio.Interfaces;
 
 namespace Wooza.PlanosTelefonia.Dominio
 {
-    public class Operadora
+    public class Operadora : IEntity
     {
         public int Id { get; set; }
         public string Nome { get; set; }

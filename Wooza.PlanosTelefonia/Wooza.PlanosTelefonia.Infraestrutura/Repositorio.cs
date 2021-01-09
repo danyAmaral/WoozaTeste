@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using Wooza.PlanosTelefonia.Dominio.Interfaces;
 
 namespace Wooza.PlanosTelefonia.Infraestrutura
 {
-    public abstract class Repositorio<T> : IRepositorio<T> where T : class
+    public abstract class Repositorio<T> : IRepositorio<T> where T : class, IEntity
     {
         private Contexto ctx;
         public Repositorio(Contexto ctx)

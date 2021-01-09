@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Wooza.PlanosTelefonia.Dominio.Interfaces;
 
 namespace Wooza.PlanosTelefonia.Dominio
 {
-    public class PlanoTelefonia
+    public class PlanoTelefonia : IEntity
     {
         public int Id { get; set; }
         public string Codigo { get; set; }
         public int Minutos { get; set; }
-        public int FranquiaInternet { get; set; }
+        public string FranquiaInternet { get; set; }
         public decimal Valor { get; set; }
-        public string CodigoDDD { get; set; }
-        public string OperadoraId { get; set; }
+        public int DDDId { get; set; }
+        public int OperadoraId { get; set; }
+        public TipoPlano TipoPlano { get; set; }
         public Operadora Operadora { get; set; }
         public DDD DDD { get; set; }
     }

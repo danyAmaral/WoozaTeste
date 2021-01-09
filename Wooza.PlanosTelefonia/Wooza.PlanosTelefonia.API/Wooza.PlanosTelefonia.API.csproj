@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Wooza.PlanosTelefonia.Core\Wooza.PlanosTelefonia.Core.csproj" />
     <ProjectReference Include="..\Wooza.PlanosTelefonia.Dominio\Wooza.PlanosTelefonia.Dominio.csproj" />
   </ItemGroup>
